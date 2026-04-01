@@ -410,16 +410,63 @@
 <p class="text-lg text-slate-300 mb-10 max-w-2xl mx-auto">
                         Đừng để đối thủ bỏ xa bạn trong cuộc đua công nghệ. Hãy để Aladin Tech đồng hành cùng bạn trên con đường chuyển đổi số.
                     </p>
-<form class="max-w-md mx-auto flex flex-col gap-4 relative z-20">
-<div class="grid grid-cols-1 gap-4">
-<input class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:border-primary/50 transition-all" placeholder="Họ và tên" required="" type="text"/>
-<input class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:border-primary/50 transition-all" placeholder="Email" required="" type="email"/>
-<input class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:border-primary/50 transition-all" placeholder="Số điện thoại" required="" type="tel"/>
+<!-- Form gửi thành công -->
+<div id="form-success" class="hidden max-w-md mx-auto text-center py-8">
+  <div class="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mx-auto mb-4">
+    <span class="material-symbols-outlined text-4xl text-primary">check_circle</span>
+  </div>
+  <h3 class="text-xl font-bold text-white mb-2">Gửi thành công!</h3>
+  <p class="text-slate-400">Cảm ơn bạn đã liên hệ. Chúng tôi sẽ phản hồi trong vòng 24h.</p>
 </div>
-<button class="bg-[#31b44a] hover:bg-[#31b44a]/90 text-white text-lg font-bold py-4 px-10 rounded-xl transition-all shadow-[0_0_20px_rgba(49,180,73,0.4)] hover:shadow-[0_0_40px_rgba(49,180,73,0.6)] hover:-translate-y-1 mt-2" type="submit">
-        Đăng ký
-    </button>
+
+<form
+  id="lien-he-form"
+  name="lien-he"
+  method="POST"
+  data-netlify="true"
+  data-netlify-honeypot="bot-field"
+  class="max-w-md mx-auto flex flex-col gap-4 relative z-20"
+>
+  <!-- Bắt buộc với Netlify Forms -->
+  <input type="hidden" name="form-name" value="lien-he" />
+  <!-- Chống spam -->
+  <p class="hidden"><input name="bot-field" /></p>
+
+  <div class="grid grid-cols-1 gap-4">
+    <input
+      name="ho-ten"
+      class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:border-primary/50 transition-all"
+      placeholder="Họ và tên" required type="text"
+    />
+    <input
+      name="email"
+      class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:border-primary/50 transition-all"
+      placeholder="Email" required type="email"
+    />
+    <input
+      name="so-dien-thoai"
+      class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-500 focus:outline-none focus:border-primary/50 transition-all"
+      placeholder="Số điện thoại" required type="tel"
+    />
+  </div>
+  <button
+    type="submit"
+    class="bg-[#31b44a] hover:bg-[#31b44a]/90 text-white text-lg font-bold py-4 px-10 rounded-xl transition-all shadow-[0_0_20px_rgba(49,180,73,0.4)] hover:shadow-[0_0_40px_rgba(49,180,73,0.6)] hover:-translate-y-1 mt-2"
+  >
+    Đăng ký tư vấn
+  </button>
 </form>
+
+<script>
+  const form = document.getElementById('lien-he-form');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    await fetch('/', { method: 'POST', body: data });
+    form.classList.add('hidden');
+    document.getElementById('form-success').classList.remove('hidden');
+  });
+</script>
 </div>
 </div>
 </section>
@@ -483,7 +530,7 @@
 </li>
 <li class="flex items-center gap-3 text-sm text-slate-400">
 <span class="material-symbols-outlined text-primary text-lg">mail</span>
-<span>contact@aladintech.vn</span>
+<span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1f7c70716b7e7c6b5f7e737e7b76716b7a7c77316971">[email&#160;protected]</a></span>
 </li>
 </ul>
 </div>
@@ -492,9 +539,4 @@
 <p class="text-xs text-slate-500">© 2023 Aladin Technology. All rights reserved.</p>
 <div class="flex gap-6">
 <a class="text-xs text-slate-500 hover:text-white transition-colors" href="#">Privacy Policy</a>
-<a class="text-xs text-slate-500 hover:text-white transition-colors" href="#">Terms of Service</a>
-</div>
-</div>
-</div>
-</footer>
-</body></html>
+<a class="text-xs te
