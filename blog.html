@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Blog & Tin tức - Aladin Tech</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#31b449",
+            "background-dark": "#0d120e",
+          },
+          fontFamily: { "display": ["Inter", "sans-serif"] },
+        },
+      },
+    }
+  </script>
+  <style>
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0d120e; }
+    ::-webkit-scrollbar-thumb { background: #2b362d; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #31b449; }
+    .glass-panel {
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .glass-header {
+      background: rgba(13,18,14,0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .text-glow { text-shadow: 0 0 40px rgba(49,180,73,0.3); }
+    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card-hover:hover { transform: translateY(-6px); }
+    .skeleton {
+      background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 8px;
+    }
+    @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+  </style>
+</head>
+<body class="bg-background-dark text-slate-100 font-display min-h-screen flex flex-col overflow-x-hidden">
+
+<!-- Ambient Background -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+  <div class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full bg-primary/10 blur-[120px]"></div>
+  <div class="absolute bottom-[10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-blue-500/5 blur-[100px]"></div>
+</div>
+
+<!-- Header -->
+<header class="glass-header fixed top-0 w-full z-50">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center text-primary">
+        <span class="material-symbols-outlined text-3xl">smart_toy</span>
+      </div>
+      <span class="text-xl font-bold tracking-tight text-white">Aladin<span class="text-primary">Tech</span></span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8">
+      <a class="text-sm font-medium text-slate-300 hover:text-white transition-colors" href="index.html#about">Giới thiệu</a>
+      <a class="text-sm font-medium text-slate-300 hover:text-white transition-colors" href="index.html#services">Dịch vụ</a>
+      <a class="text-sm font-medium text-slate-300 hover:text-white transition-colors" href="index.html#clients">Khách Hàng</a>
+      <a class="text-sm font-medium text-primary" href="blog.html">Tin tức</a>
+      <a class="text-sm font-medium text-slate-300 hover:text-white transition-colors" href="index.html#contact">Liên hệ</a>
+    </nav>
+    <a href="index.html#contact" class="bg-primary hover:bg-primary/90 text-white text-sm font-bold py-2.5 px-6 rounded-lg transition-all shadow-[0_0_20px_rgba(49,180,73,0.3)]">
+      Nhận tư vấn
+    </a>
+  </div>
+</header>
+
+<!-- Main -->
+<main class="relative z-10 flex-grow pt-32 pb-20 px-6">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Page Title -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 w-fit mx-auto mb-6">
+        <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+        <span class="text-xs font-semibold text-primary uppercase tracking-wider">Blog & Tin tức</span>
+      </div>
+      <h1 class="text-4xl lg:text-5xl font-black text-white text-glow mb-4">Kiến thức & Xu hướng AI</h1>
+      <p class="text-lg text-slate-400 max-w-2xl mx-auto">Cập nhật những xu hướng công nghệ AI mới nhất và giải pháp số hóa doanh nghiệp.</p>
+    </div>
+
+    <!-- Skeleton Loading -->
+    <div id="skeleton-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="glass-panel rounded-2xl overflow-hidden" style="height:380px">
+        <div class="skeleton w-full" style="height:200px"></div>
+        <div class="p-6 flex flex-col gap-3">
+          <div class="skeleton h-3 w-24"></div>
+          <div class="skeleton h-5 w-full"></div>
+          <div class="skeleton h-4 w-full"></div>
+          <div class="skeleton h-4 w-3/4"></div>
+        </div>
+      </div>
+      <div class="glass-panel rounded-2xl overflow-hidden hidden md:block" style="height:380px">
+        <div class="skeleton w-full" style="height:200px"></div>
+        <div class="p-6 flex flex-col gap-3">
+          <div class="skeleton h-3 w-24"></div>
+          <div class="skeleton h-5 w-full"></div>
+          <div class="skeleton h-4 w-full"></div>
+          <div class="skeleton h-4 w-3/4"></div>
+        </div>
+      </div>
+      <div class="glass-panel rounded-2xl overflow-hidden hidden lg:block" style="height:380px">
+        <div class="skeleton w-full" style="height:200px"></div>
+        <div class="p-6 flex flex-col gap-3">
+          <div class="skeleton h-3 w-24"></div>
+          <div class="skeleton h-5 w-full"></div>
+          <div class="skeleton h-4 w-full"></div>
+          <div class="skeleton h-4 w-3/4"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Posts Grid -->
+    <div id="posts-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 hidden"></div>
+
+    <!-- Error -->
+    <div id="posts-error" class="hidden text-center py-20">
+      <span class="material-symbols-outlined text-5xl text-slate-600 mb-4 block">wifi_off</span>
+      <p class="text-slate-400">Không thể tải bài viết. Vui lòng thử lại sau.</p>
+    </div>
+
+    <!-- Pagination -->
+    <div id="phan-trang" class="flex justify-center gap-2 mt-16"></div>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-[#0a0f0b] border-t border-white/5 py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+    <div class="flex items-center gap-2">
+      <span class="material-symbols-outlined text-2xl text-primary">smart_toy</span>
+      <span class="font-bold text-white">Aladin<span class="text-primary">Tech</span></span>
+    </div>
+    <p class="text-xs text-slate-500">© 2024 Aladin Technology. All rights reserved.</p>
+    <a href="index.html" class="text-xs text-slate-400 hover:text-primary transition-colors">← Về trang chủ</a>
+  </div>
+</footer>
+
+<script>
+  const WP_API = "http://aladintechcms.infinityfreeapp.com/wp-json/wp/v2";
+  let trangHienTai = 1;
+
+  async function taiBaiViet(trang = 1) {
+    try {
+      const res = await fetch(`${WP_API}/posts?_embed&per_page=6&page=${trang}`);
+      if (!res.ok) throw new Error("API lỗi");
+
+      const tongTrang = parseInt(res.headers.get("X-WP-TotalPages")) || 1;
+      const baiViet = await res.json();
+
+      // Ẩn skeleton, hiện grid
+      document.getElementById("skeleton-grid").classList.add("hidden");
+      const grid = document.getElementById("posts-grid");
+      grid.classList.remove("hidden");
+
+      if (baiViet.length === 0) {
+        grid.innerHTML = `<div class="col-span-3 text-center py-20 text-slate-400">Chưa có bài viết nào.</div>`;
+        return;
+      }
+
+      grid.innerHTML = baiViet.map(bv => {
+        const anh = bv._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "";
+        const ngay = new Date(bv.date).toLocaleDateString("vi-VN", { day: "2-digit", month: "long", year: "numeric" });
+        const tomTat = bv.excerpt.rendered.replace(/<[^>]*>/g, "").slice(0, 110);
+        const danhmuc = bv._embedded?.["wp:term"]?.[0]?.[0]?.name || "Tin tức";
+
+        return `
+          <article class="glass-panel rounded-2xl overflow-hidden card-hover group cursor-pointer"
+            onclick="window.location='bai-viet.html?slug=${bv.slug}'">
+            <div class="h-52 overflow-hidden relative bg-white/5">
+              ${anh
+                ? `<img src="${anh}" alt="${bv.title.rendered}"
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">`
+                : `<div class="w-full h-full flex items-center justify-center">
+                    <span class="material-symbols-outlined text-5xl text-slate-600">article</span>
+                  </div>`
+              }
+              <div class="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">${danhmuc}</div>
+            </div>
+            <div class="p-6">
+              <span class="text-xs text-slate-500 mb-3 block">${ngay}</span>
+              <h2 class="text-lg font-bold text-white mb-3 leading-snug group-hover:text-primary transition-colors line-clamp-2">
+                ${bv.title.rendered}
+              </h2>
+              <p class="text-sm text-slate-400 mb-4 line-clamp-2">${tomTat}...</p>
+              <span class="text-sm font-bold text-primary flex items-center gap-1">
+                Đọc thêm <span class="material-symbols-outlined text-sm">arrow_forward</span>
+              </span>
+            </div>
+          </article>
+        `;
+      }).join("");
+
+      // Phân trang
+      renderPhanTrang(tongTrang, trang);
+
+    } catch (err) {
+      document.getElementById("skeleton-grid").classList.add("hidden");
+      document.getElementById("posts-error").classList.remove("hidden");
+    }
+  }
+
+  function renderPhanTrang(tongTrang, trangHienTai) {
+    if (tongTrang <= 1) return;
+    const el = document.getElementById("phan-trang");
+    let html = "";
+    for (let i = 1; i <= tongTrang; i++) {
+      html += `
+        <button onclick="doiTrang(${i})"
+          class="w-10 h-10 rounded-lg text-sm font-bold transition-all
+            ${i === trangHienTai
+              ? 'bg-primary text-white shadow-[0_0_15px_rgba(49,180,73,0.4)]'
+              : 'glass-panel text-slate-400 hover:text-white hover:border-primary/30'}">
+          ${i}
+        </button>`;
+    }
+    el.innerHTML = html;
+  }
+
+  function doiTrang(trang) {
+    trangHienTai = trang;
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    document.getElementById("posts-grid").classList.add("hidden");
+    document.getElementById("skeleton-grid").classList.remove("hidden");
+    taiBaiViet(trang);
+  }
+
+  taiBaiViet();
+</script>
+</body>
+</html>

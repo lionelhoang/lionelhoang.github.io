@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Bài viết - Aladin Tech</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#31b449",
+            "background-dark": "#0d120e",
+          },
+          fontFamily: { "display": ["Inter", "sans-serif"] },
+        },
+      },
+    }
+  </script>
+  <style>
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0d120e; }
+    ::-webkit-scrollbar-thumb { background: #2b362d; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #31b449; }
+    .glass-panel {
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .glass-header {
+      background: rgba(13,18,14,0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .text-glow { text-shadow: 0 0 40px rgba(49,180,73,0.3); }
+    .skeleton {
+      background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 8px;
+    }
+    @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+
+    /* Style cho nội dung bài viết từ WordPress */
+    .post-content p        { margin-bottom: 1.4rem; line-height: 1.85; color: #94a3b8; }
+    .post-content h2       { font-size: 1.5rem; font-weight: 800; color: white; margin: 2.5rem 0 1rem; }
+    .post-content h3       { font-size: 1.2rem; font-weight: 700; color: white; margin: 2rem 0 0.8rem; }
+    .post-content img      { max-width: 100%; border-radius: 12px; margin: 1.5rem 0; }
+    .post-content a        { color: #31b449; text-decoration: underline; }
+    .post-content a:hover  { color: #4ade80; }
+    .post-content ul, .post-content ol { padding-left: 1.5rem; margin-bottom: 1.2rem; color: #94a3b8; }
+    .post-content li       { margin-bottom: 0.5rem; line-height: 1.7; }
+    .post-content blockquote {
+      border-left: 3px solid #31b449;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      background: rgba(49,180,73,0.05);
+      border-radius: 0 8px 8px 0;
+      color: #cbd5e1;
+      font-style: italic;
+    }
+    .post-content code {
+      background: rgba(255,255,255,0.08);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      color: #4ade80;
+    }
+    .post-content pre {
+      background: rgba(0,0,0,0.4);
+      padding: 1.5rem;
+      border-radius: 12px;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .post-content pre code { background: none; padding: 0; }
+    .post-content strong { color: white; font-weight: 700; }
+  </style>
+</head>
+<body class="bg-background-dark text-slate-100 font-display min-h-screen flex flex-col overflow-x-hidden">
+
+<!-- Ambient Background -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+  <div class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full bg-primary/10 blur-[120px]"></div>
+  <div class="absolute bottom-[10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-blue-500/5 blur-[100px]"></div>
+</div>
+
+<!-- Header -->
+<header class="glass-header fixed top-0 w-full z-50">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center text-primary">
+        <span class="material-symbols-outlined text-3xl">smart_toy</span>
+      </div>
+      <span class="text-xl font-bold tracking-tight text-white">Aladin<span class="text-primary">Tech</span></span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8">
+      <a class="text-sm font-medium text-slate-300 hover:text-white transition-colors" href="index.html#about">Giới thiệu</a>
+      <a class="text-sm font-medium text-slate-300 hover:text-white transition-colors" href="index.html#services">Dịch vụ</a>
+      <a class="text-sm font-medium text-slate-300 hover:text-white transition-colors" href="index.html#clients">Khách Hàng</a>
+      <a class="text-sm font-medium text-primary" href="blog.html">Tin tức</a>
+      <a class="text-sm font-medium text-slate-300 hover:text-white transition-colors" href="index.html#contact">Liên hệ</a>
+    </nav>
+    <a href="index.html#contact" class="bg-primary hover:bg-primary/90 text-white text-sm font-bold py-2.5 px-6 rounded-lg transition-all shadow-[0_0_20px_rgba(49,180,73,0.3)]">
+      Nhận tư vấn
+    </a>
+  </div>
+</header>
+
+<!-- Main -->
+<main class="relative z-10 flex-grow pt-32 pb-20 px-6">
+  <div class="max-w-3xl mx-auto">
+
+    <!-- Nút quay lại -->
+    <a href="blog.html" class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-primary transition-colors mb-10 group">
+      <span class="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform">arrow_back</span>
+      Quay lại Blog
+    </a>
+
+    <!-- Skeleton Loading -->
+    <div id="skeleton-post" class="flex flex-col gap-6">
+      <div class="skeleton h-6 w-32"></div>
+      <div class="skeleton h-10 w-full"></div>
+      <div class="skeleton h-10 w-3/4"></div>
+      <div class="skeleton h-5 w-48"></div>
+      <div class="skeleton w-full rounded-2xl" style="height:400px"></div>
+      <div class="skeleton h-4 w-full"></div>
+      <div class="skeleton h-4 w-full"></div>
+      <div class="skeleton h-4 w-2/3"></div>
+    </div>
+
+    <!-- Nội dung bài viết -->
+    <article id="noi-dung-bai" class="hidden">
+      <div id="danhmuc" class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 w-fit mb-6">
+        <span class="text-xs font-semibold text-primary uppercase tracking-wider"></span>
+      </div>
+      <h1 id="tieu-de" class="text-3xl lg:text-4xl font-black text-white text-glow leading-tight mb-6"></h1>
+      <div class="flex items-center gap-4 mb-8 pb-8 border-b border-white/10">
+        <div class="flex items-center gap-2 text-sm text-slate-400">
+          <span class="material-symbols-outlined text-primary text-lg">calendar_today</span>
+          <span id="ngay-dang"></span>
+        </div>
+        <div class="flex items-center gap-2 text-sm text-slate-400">
+          <span class="material-symbols-outlined text-primary text-lg">person</span>
+          <span id="tac-gia"></span>
+        </div>
+      </div>
+      <div id="anh-dai-dien" class="mb-10"></div>
+      <div id="noi-dung" class="post-content"></div>
+    </article>
+
+    <!-- Lỗi -->
+    <div id="loi-bai" class="hidden text-center py-20">
+      <span class="material-symbols-outlined text-5xl text-slate-600 mb-4 block">article_shortcut</span>
+      <p class="text-slate-400 mb-6">Không tìm thấy bài viết.</p>
+      <a href="blog.html" class="bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-primary/90 transition-all">
+        Xem tất cả bài viết
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-[#0a0f0b] border-t border-white/5 py-8 relative z-10">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+    <div class="flex items-center gap-2">
+      <span class="material-symbols-outlined text-2xl text-primary">smart_toy</span>
+      <span class="font-bold text-white">Aladin<span class="text-primary">Tech</span></span>
+    </div>
+    <p class="text-xs text-slate-500">© 2024 Aladin Technology. All rights reserved.</p>
+    <a href="index.html" class="text-xs text-slate-400 hover:text-primary transition-colors">← Về trang chủ</a>
+  </div>
+</footer>
+
+<script>
+  const WP_API = "http://aladintechcms.infinityfreeapp.com/wp-json/wp/v2";
+  const slug = new URLSearchParams(window.location.search).get("slug");
+
+  async function taiBaiChiTiet() {
+    if (!slug) {
+      hienLoi();
+      return;
+    }
+
+    try {
+      const res = await fetch(`${WP_API}/posts?slug=${slug}&_embed`);
+      const data = await res.json();
+      const bv = data[0];
+
+      if (!bv) { hienLoi(); return; }
+
+      // Cập nhật tiêu đề tab
+      document.title = bv.title.rendered + " | Aladin Tech";
+
+      // Danh mục
+      const danhmuc = bv._embedded?.["wp:term"]?.[0]?.[0]?.name || "Tin tức";
+      document.querySelector("#danhmuc span").textContent = danhmuc;
+
+      // Tiêu đề
+      document.getElementById("tieu-de").innerHTML = bv.title.rendered;
+
+      // Ngày đăng
+      document.getElementById("ngay-dang").textContent =
+        new Date(bv.date).toLocaleDateString("vi-VN", { day: "2-digit", month: "long", year: "numeric" });
+
+      // Tác giả
+      document.getElementById("tac-gia").textContent =
+        bv._embedded?.author?.[0]?.name || "Aladin Tech";
+
+      // Ảnh đại diện
+      const anh = bv._embedded?.["wp:featuredmedia"]?.[0]?.source_url;
+      if (anh) {
+        document.getElementById("anh-dai-dien").innerHTML =
+          `<img src="${anh}" alt="${bv.title.rendered}" class="w-full rounded-2xl object-cover max-h-96">`;
+      }
+
+      // Nội dung
+      document.getElementById("noi-dung").innerHTML = bv.content.rendered;
+
+      // Ẩn skeleton, hiện bài
+      document.getElementById("skeleton-post").classList.add("hidden");
+      document.getElementById("noi-dung-bai").classList.remove("hidden");
+
+    } catch (err) {
+      hienLoi();
+    }
+  }
+
+  function hienLoi() {
+    document.getElementById("skeleton-post").classList.add("hidden");
+    document.getElementById("loi-bai").classList.remove("hidden");
+  }
+
+  taiBaiChiTiet();
+</script>
+</body>
+</html>
